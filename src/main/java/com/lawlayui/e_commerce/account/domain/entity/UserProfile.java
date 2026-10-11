@@ -17,8 +17,8 @@ public class UserProfile {
         this.fullName = newFullName;
     }
 
-    public void updateContactNumber(String countryCode, String newPhoneNumber) {
-        this.phoneNumber = PhoneNumber.of(countryCode, newPhoneNumber);
+    public void updateContactNumber(String newPhoneNumber) {
+        this.phoneNumber = PhoneNumber.of(newPhoneNumber);
     }
 
     public void relocateTo(String newAddress) {
