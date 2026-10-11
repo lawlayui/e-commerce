@@ -17,27 +17,26 @@ public class UserProfileTest {
     private String PROFILE_ID = "1";
     private String USER_ID = "2";
     private String FULL_NAME = "Lawlayui";
-    private String PHONE_NUMBER = "0812345678";
-    private String COUNTRY_CODE = "+62";
+    private String PHONE_NUMBER = "+62 0812345678";
     private String ADDRESS = "Jl. Merdeka No. 10, Kel. Braga, Kec. Sumur Bandung, Kota Bandung, Jawa Barat, 40111";
     
     private UserProfile userProfile; 
 
     @BeforeEach 
     void setUp() {
-        userProfile = UserProfile.reconstitue(PROFILE_ID, USER_ID, FULL_NAME,PHONE_NUMBER, COUNTRY_CODE, ADDRESS, LocalDateTime.now());
+        userProfile = UserProfile.reconstitue(PROFILE_ID, USER_ID, FULL_NAME,PHONE_NUMBER, ADDRESS, LocalDateTime.now());
     }
     //Factory Test
     @Test 
     void reconstitue_ShouldReturnNewUserProfile() {
-        UserProfile userProfile = UserProfile.reconstitue(PROFILE_ID, USER_ID, FULL_NAME, PHONE_NUMBER, FULL_NAME, ADDRESS, LocalDateTime.now());
+        UserProfile userProfile = UserProfile.reconstitue(PROFILE_ID, USER_ID, FULL_NAME, PHONE_NUMBER, ADDRESS, LocalDateTime.now());
 
         assertNotNull(userProfile);
     }
 
     @Test 
     void create_ShouldReturnNewUserProfile()  {
-        UserProfile userProfile = UserProfile.create(USER_ID, FULL_NAME, PHONE_NUMBER, COUNTRY_CODE, ADDRESS);
+        UserProfile userProfile = UserProfile.create(USER_ID, FULL_NAME, PHONE_NUMBER, ADDRESS);
 
         assertNotNull(userProfile);
     }

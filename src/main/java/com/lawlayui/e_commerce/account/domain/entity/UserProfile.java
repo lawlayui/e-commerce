@@ -26,18 +26,18 @@ public class UserProfile {
     }
 
     public static UserProfile reconstitue(String profileId, String userId, String fullName,
-        String phoneNumber, String countryCode, String address, 
+        String phoneNumber, String address, 
         LocalDateTime updatedAt
     ) {
         return new UserProfile(profileId, userId, fullName, 
-            PhoneNumber.of(countryCode, phoneNumber), Address.of(address), 
+            PhoneNumber.of(phoneNumber), Address.of(address), 
             updatedAt);
     }
 
-    public static UserProfile create(String userId, String fullName, String phoneNumber, String countryCode,
+    public static UserProfile create(String userId, String fullName, String phoneNumber,
         String address 
     ) {
-        return new UserProfile(null, userId, fullName, PhoneNumber.of(countryCode, phoneNumber), Address.of(address), LocalDateTime.now());
+        return new UserProfile(null, userId, fullName, PhoneNumber.of(phoneNumber), Address.of(address), LocalDateTime.now());
     }
     
     private UserProfile(String profileId, String userId, String fullName, PhoneNumber phoneNumber, Address address,
