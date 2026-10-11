@@ -22,6 +22,14 @@ public class PhoneNumber {
     public static PhoneNumber of(String phoneNumber) {
         String phonePattern = "^\\+62\\s?08\\d{8,11}$";
 
+        if (!phoneNumber.startsWith("+62")) {
+            phoneNumber = "+62 " + phoneNumber;
+        }
+        
+        if (phoneNumber.startsWith("+62")) {
+            phoneNumber = phoneNumber.replace("+62", "+62 ");
+        }
+
         if (!phoneNumber.matches(phonePattern)) {
             throw new InvalidPhoneNumberException();
         }
