@@ -18,6 +18,16 @@ public class PhoneNumber {
 
         return new PhoneNumber(countryCode + " " + phoneNumber);
     }
+
+    public static PhoneNumber of(String phoneNumber) {
+        String phonePattern = "^\\+62\\s?08\\d{8,11}$";
+
+        if (!phoneNumber.matches(phonePattern)) {
+            throw new InvalidPhoneNumberException();
+        }
+
+        return new PhoneNumber(phoneNumber);
+    }
     public String getValue() {
         return value;
     }
