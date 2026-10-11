@@ -26,12 +26,12 @@ public class UserProfileMapper {
         if (command.getFullName() != null) {
             profile.rename(command.getFullName());
         }
-        if (command.getPhoneNumber() != null && command.getCountryCode() != null) {
-            profile.updateContactNumber(command.getCountryCode(), command.getPhoneNumber());
+        if (command.getPhoneNumber() != null) {
+            profile.updateContactNumber(command.getPhoneNumber());
         }
     }
 
     public static UserProfile commandToDomain(CreateUserProfileCommand command) {
-        return UserProfile.create(command.getUserId(), command.getFirstName() + " " + command.getLastName(), command.getPhoneNumber(), command.getCountryCode(), command.getAddress());
+        return UserProfile.create(command.getUserId(), command.getFirstName() + " " + command.getLastName(), command.getPhoneNumber(), command.getAddress());
    }
 }
