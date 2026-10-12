@@ -1,0 +1,81 @@
+[33m1ce6835[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mwip/account/user-profiles-core-models[m[33m)[m HEAD@{0}: checkout: moving from wip/account/user-application to wip/account/user-profiles-core-models
+[33md4b54c8[m[33m ([m[1;32mwip/account/user-application[m[33m)[m HEAD@{1}: commit (merge): Merge branch 'wip/account/user-profiles-core-models' into wip/account/user-application
+[33ma41a9d7[m HEAD@{2}: checkout: moving from wip/account/user-profiles-core-models to wip/account/user-application
+[33m1ce6835[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mwip/account/user-profiles-core-models[m[33m)[m HEAD@{3}: commit: Implement UserProfile and PhoneNumber classes with basic functionality and tests
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{4}: checkout: moving from wip/account/user-application to wip/account/user-profiles-core-models
+[33ma41a9d7[m HEAD@{5}: reset: moving to HEAD
+[33ma41a9d7[m HEAD@{6}: commit: Refactor UpdateUserProfileCommand to remove country code; update UserProfileMapper to handle phone number without country code.
+[33m4da2941[m HEAD@{7}: reset: moving to HEAD^
+[33mf2402ac[m HEAD@{8}: commit: Refactor UpdateUserProfileCommand to remove country code; update UserProfileMapper to handle phone number without country code.
+[33m4da2941[m HEAD@{9}: merge feat/account/user-profiles-core-models: Merge made by the 'ort' strategy.
+[33m3be8e7d[m[33m ([m[1;31morigin/wip/account/user-application[m[33m)[m HEAD@{10}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-application
+[33ma352a0c[m[33m ([m[1;32mfeat/account/user-profiles-core-models[m[33m)[m HEAD@{11}: commit: Refactor UserProfile and PhoneNumber classes to simplify phone number handling by removing country code parameter. Update UserProfileTest to reflect changes in UserProfile methods.
+[33m9b20cc2[m[33m ([m[1;31morigin/feat/account/user-profiles-core-models[m[33m)[m HEAD@{12}: checkout: moving from wip/account/user-infrastructure to feat/account/user-profiles-core-models
+[33m6b1e715[m[33m ([m[1;31morigin/wip/account/user-infrastructure[m[33m, [m[1;32mwip/account/user-infrastructure[m[33m)[m HEAD@{13}: checkout: moving from wip/account/user-application to wip/account/user-infrastructure
+[33m3be8e7d[m[33m ([m[1;31morigin/wip/account/user-application[m[33m)[m HEAD@{14}: commit: Add CreateUserProfileCommand and CreateUserProfileUseCaseImpl; refactor UserProfileDto and UserProfileMapper
+[33mf6e3e8e[m HEAD@{15}: checkout: moving from wip/account/user-infrastructure to wip/account/user-application
+[33m6b1e715[m[33m ([m[1;31morigin/wip/account/user-infrastructure[m[33m, [m[1;32mwip/account/user-infrastructure[m[33m)[m HEAD@{16}: commit: Implement user and user profile JPA entities, repositories, and mappers for persistence layer
+[33mf6e3e8e[m HEAD@{17}: checkout: moving from wip/account/user-application to wip/account/user-infrastructure
+[33mf6e3e8e[m HEAD@{18}: merge feat/account/user-profiles-core-models: Merge made by the 'ort' strategy.
+[33mbd00a4c[m HEAD@{19}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-application
+[33m9b20cc2[m[33m ([m[1;31morigin/feat/account/user-profiles-core-models[m[33m)[m HEAD@{20}: commit: Refactor UserProfile class by removing city and postalCode fields, updating relocateTo method, and adding create method. Update InvalidAddressException message and enhance Address validation pattern. Add UserProfileTest for comprehensive testing of UserProfile functionalities.
+[33mdc14ea6[m HEAD@{21}: commit: Fix method signature for initializing UserProfile to be static
+[33mba00332[m HEAD@{22}: checkout: moving from wip/account/user-application to feat/account/user-profiles-core-models
+[33mbd00a4c[m HEAD@{23}: commit: Implement user registration and profile update features, including event publishing and exception handling
+[33m86f81c4[m HEAD@{24}: commit: Implement user and user profile management features, including exception handling, DTOs, mappers, and use cases for querying users and user profiles.
+[33m575f34e[m HEAD@{25}: merge feat/account/user-profiles-core-models: Merge made by the 'ort' strategy.
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{26}: checkout: moving from wip/account/user-application to wip/account/user-application
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{27}: checkout: moving from feat/account/user-core-models to wip/account/user-application
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{28}: checkout: moving from wip/account/user-core-models to feat/account/user-core-models
+[33ma6fc6b4[m[33m ([m[1;31morigin/wip/account/user-core-models[m[33m, [m[1;32mwip/account/user-core-models[m[33m)[m HEAD@{29}: reset: moving to a6fc6b4
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{30}: checkout: moving from feat/account/user-core-models to wip/account/user-core-models
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{31}: reset: moving to 1bcbb5d
+[33ma6fc6b4[m[33m ([m[1;31morigin/wip/account/user-core-models[m[33m, [m[1;32mwip/account/user-core-models[m[33m)[m HEAD@{32}: checkout: moving from wip/account/user-core-models to feat/account/user-core-models
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{33}: checkout: moving from feat/account/user-core-models to wip/account/user-core-models
+[33ma6fc6b4[m[33m ([m[1;31morigin/wip/account/user-core-models[m[33m, [m[1;32mwip/account/user-core-models[m[33m)[m HEAD@{34}: reset: moving to a6fc6b4
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{35}: checkout: moving from wip/account/user-core-models to feat/account/user-core-models
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{36}: checkout: moving from feat/account/user-core-models to wip/account/user-core-models
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{37}: checkout: moving from wip/account/user-core-models to feat/account/user-core-models
+[33m1bcbb5d[m[33m ([m[1;31morigin/feat/account/user-core-models[m[33m, [m[1;32mfeat/account/user-core-models[m[33m)[m HEAD@{38}: commit: Refactor User password handling and add InvalidHashedPasswordException; implement UserTest for registration and password logic
+[33ma6fc6b4[m[33m ([m[1;31morigin/wip/account/user-core-models[m[33m, [m[1;32mwip/account/user-core-models[m[33m)[m HEAD@{39}: pull: Fast-forward
+[33meabd7f0[m HEAD@{40}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-core-models
+[33mba00332[m HEAD@{41}: checkout: moving from wip/account/user-core-models to feat/account/user-profiles-core-models
+[33meabd7f0[m HEAD@{42}: commit: Implement user core models including User, Email, Password, Role, and InvalidEmailException
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{43}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-core-models
+[33mba00332[m HEAD@{44}: Branch: renamed refs/heads/feat/account/user-core-models to refs/heads/feat/account/user-profiles-core-models
+[33mba00332[m HEAD@{46}: commit: Implement UserProfile, Address, and PhoneNumber value objects with validation exceptions
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{47}: checkout: moving from main to feat/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{48}: checkout: moving from feat/account/user-core-models to main
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{49}: checkout: moving from branch-selamat to feat/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{50}: reset: moving to HEAD
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{51}: reset: moving to main
+[33m77eacc2[m HEAD@{52}: checkout: moving from feat/account/user-core-models to branch-selamat
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{53}: checkout: moving from branch-selamat to feat/account/user-core-models
+[33m77eacc2[m HEAD@{54}: checkout: moving from feat/account/user-profiles-core-models to branch-selamat
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{55}: checkout: moving from wip/account/user-profiles-core-models to feat/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{56}: checkout: moving from wip/account/user-core-models to wip/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{57}: checkout: moving from feat/account/user-core-models to wip/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{58}: checkout: moving from checkout to feat/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{59}: checkout: moving from main to checkout
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{60}: checkout: moving from wip/account/user-profiles-core-models to main
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{61}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{62}: checkout: moving from checkout to feat/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{63}: checkout: moving from wip/account/user-core-models to checkout
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{64}: reset: moving to main
+[33m0bf35c6[m HEAD@{65}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{66}: reset: moving to main
+[33m77eacc2[m HEAD@{67}: checkout: moving from main to feat/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{68}: reset: moving to HEAD
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{69}: checkout: moving from wip/account/user-core-models to main
+[33m0bf35c6[m HEAD@{70}: reset: moving to HEAD
+[33m0bf35c6[m HEAD@{71}: reset: moving to HEAD~1
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{72}: reset: moving to HEAD~1
+[33m17f70e0[m HEAD@{73}: commit: Implement User, Email, Password, and Role value objects
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{74}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-core-models
+[33m77eacc2[m HEAD@{75}: commit: Implement UserProfile entity and validation exceptions for address and phone number
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{76}: checkout: moving from wip/account/user-profiles-core-models to feat/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{77}: checkout: moving from wip/account/user-core-models to wip/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{78}: checkout: moving from feat/account/user-profiles-core-models to wip/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{79}: checkout: moving from feat/account/user-core-models to feat/account/user-profiles-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{80}: checkout: moving from main to feat/account/user-core-models
+[33m8529a59[m[33m ([m[1;31morigin/wip/account/user-profiles-core-models[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{81}: clone: from https://github.com/lawlayui/e-commerce-.git
