@@ -5,6 +5,7 @@ import com.lawlayui.e_commerce.account.application.mapper.UserProfileMapper;
 import com.lawlayui.e_commerce.account.application.port.in.command.CreateUserProfileCommand;
 import com.lawlayui.e_commerce.account.application.port.out.UserProfileRepository;
 import com.lawlayui.e_commerce.account.application.port.out.UserRepository;
+import com.lawlayui.e_commerce.account.domain.User;
 import com.lawlayui.e_commerce.account.domain.entity.UserProfile;
 
 public class CreateUserProfileUseCaseImpl {
@@ -17,10 +18,10 @@ public class CreateUserProfileUseCaseImpl {
     }
 
     public void  createUserProfile(CreateUserProfileCommand command) {
-        userRepository.getById(command.getUserId()).orElseThrow(() -> new UserNotFoundException(command.getUserId()));
+        User user = userRepository.getById(command.getUserId()).orElseThrow(() -> new UserNotFoundException(command.getUserId()));
 
         UserProfile userProfile = UserProfileMapper.commandToDomain(command);
 
-        repository.save(userProfile);
+        repository.save(userProfile, user);
     }
 }
