@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.lawlayui.e_commerce.account.infrastructure.persistent.user.UserEntityJpa;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,6 +25,7 @@ import lombok.Setter;
 @Getter 
 public class UserProfileEntityJpa {
     @Id 
+    @Column(name = "profile_id")
     private String profileId;
 
     @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)

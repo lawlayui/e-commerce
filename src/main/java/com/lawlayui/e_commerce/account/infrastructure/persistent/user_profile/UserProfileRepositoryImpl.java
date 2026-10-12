@@ -6,41 +6,39 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.lawlayui.e_commerce.account.application.port.out.UserProfileRepository;
+import com.lawlayui.e_commerce.account.domain.User;
 import com.lawlayui.e_commerce.account.domain.entity.UserProfile;
+import com.lawlayui.e_commerce.account.infrastructure.persistent.user.UserPersistentMapper;
 
 @Repository 
 public class UserProfileRepositoryImpl implements UserProfileRepository{
+    private UserProfileJpaRepository jpaRepository;
+
+    public UserProfileRepositoryImpl(UserProfileJpaRepository jpaRepository) {
+        this.jpaRepository = jpaRepository;
+    }
+
     @Override
     public void deleteByUserProfileIdAndUserId(String userProfileId, String userId) {
-        // TODO Auto-generated method stub
-        
+        jpaRepository.deleteByProfileIdAndUser_Id(userProfileId, userId);
     }
 
     @Override
     public Optional<UserProfile> getById(String userProfileId) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        return jpaRepository.findById(userProfileId).map(UserProfilePersistentMapper::toDomain);
     }
 
     @Override
     public List<UserProfile> getByUserId(String userId) {
-        // TODO Auto-generated method stub
-        return null;
+        return UserProfilePersistentMapper.toDomains(jpaRepository.findByUser_Id(userId));
     }
 
     @Override
     public Optional<UserProfile> getByUserProfileIdAndUserId(String userProfileId, String userId) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        return jpaRepository.findByUserProfileIdAndUser_Id(userProfileId, userId).map(UserProfilePersistentMapper::toDomain);
     }
 
-    private UserProfileJpaRepository userProfileJpaRepository;
-
-    public UserProfileRepositoryImpl(UserProfileJpaRepository userProfileJpaRepository) {
-        this.userProfileJpaRepository = userProfileJpaRepository;
-    }
-
-    public void save(UserProfile userProfile) {
-        return null;
+    public void save(UserProfile userProfile, User user) {
+        jpaRepository.save(UserProfilePersistentMapper.toEntity(userProfile, UserPersistentMapper.toEntity(user)));
     }
 }
