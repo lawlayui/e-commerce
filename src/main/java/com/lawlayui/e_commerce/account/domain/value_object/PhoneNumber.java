@@ -9,33 +9,25 @@ public class PhoneNumber {
         this.value = phoneNumber;
     }
 
-    public static PhoneNumber of(String countryCode, String phoneNumber) {
-        String phonePattern = "^08\\d{8,11}$";
-
-        if (!phoneNumber.matches(phonePattern)) {
-            throw new InvalidPhoneNumberException();
-        }
-
-        return new PhoneNumber(countryCode + " " + phoneNumber);
-    }
-
     public static PhoneNumber of(String phoneNumber) {
-        String phonePattern = "^\\+62\\s?08\\d{8,11}$";
 
-        if (!phoneNumber.startsWith("+62")) {
-            phoneNumber = "+62 " + phoneNumber;
-        }
-        
-        if (phoneNumber.startsWith("+62")) {
-            phoneNumber = phoneNumber.replace("+62", "+62 ");
-        }
+    String cleaned = phoneNumber.trim();
 
-        if (!phoneNumber.matches(phonePattern)) {
-            throw new InvalidPhoneNumberException();
-        }
-
-        return new PhoneNumber(phoneNumber);
+    if (cleaned.startsWith("08")) {
+        cleaned = "+62 " + cleaned;
+    } else if (cleaned.startsWith("+62") && !cleaned.startsWith("+62 ")) {
+        cleaned = cleaned.replaceFirst("\\+62", "+62 ");
     }
+
+    String phonePattern = "^\\+62\\s?08\\d{8,11}$";
+
+    if (!cleaned.matches(phonePattern)) {
+        throw new InvalidPhoneNumberException("Invalid phone number format: " + phoneNumber);
+    }
+
+    return new PhoneNumber(cleaned);
+}
+
     public String getValue() {
         return value;
     }

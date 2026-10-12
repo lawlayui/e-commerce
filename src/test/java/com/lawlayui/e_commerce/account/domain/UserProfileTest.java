@@ -17,7 +17,7 @@ public class UserProfileTest {
     private String PROFILE_ID = "1";
     private String USER_ID = "2";
     private String FULL_NAME = "Lawlayui";
-    private String PHONE_NUMBER = "+62 0812345678";
+    private String PHONE_NUMBER = "0812345678";
     private String ADDRESS = "Jl. Merdeka No. 10, Kel. Braga, Kec. Sumur Bandung, Kota Bandung, Jawa Barat, 40111";
     
     private UserProfile userProfile; 
@@ -54,20 +54,18 @@ public class UserProfileTest {
     @Test 
     void updateContactNumber_ShouldChangeContactNumber() {
         String newNumber = "0887654321";
-        String newCountyCode = "+1";
 
-        userProfile.updateContactNumber(newCountyCode, newNumber);
+        userProfile.updateContactNumber(newNumber);
 
-        assertEquals(newCountyCode + " " + newNumber, userProfile.getPhoneNumber().getValue());
+        assertEquals("+62 " + newNumber,userProfile.getPhoneNumber().getValue());
     }
 
     @Test 
     void updateContactNumber_ShouldThorwInvalidPhoneNumberException_WhenNumberInvalid() {
         String newNumber = "00654321";
-        String newCountyCode = "+1";
 
         assertThrows(InvalidPhoneNumberException.class, () -> {
-            userProfile.updateContactNumber(newCountyCode, newNumber);
+            userProfile.updateContactNumber(newNumber);
         });
     }
 
