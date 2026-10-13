@@ -42,7 +42,7 @@ public class User {
     public static User register(String email, String password, Role role) {
         return new User(UUID.randomUUID().toString(), 
         Email.of(email), 
-        Password.createFromRaw(password.toCharArray()), role, true, 
+        password != null ? Password.createFromRaw(password.toCharArray()) : null, role, true, 
         LocalDateTime.now(),LocalDateTime.now());
     }
 
