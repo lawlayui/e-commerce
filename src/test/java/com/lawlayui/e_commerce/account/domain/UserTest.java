@@ -1,6 +1,7 @@
 package com.lawlayui.e_commerce.account.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,111 +14,154 @@ import org.junit.jupiter.api.Test;
 
 import com.lawlayui.e_commerce.account.domain.exception.InvalidEmailException;
 import com.lawlayui.e_commerce.account.domain.exception.InvalidHashedPasswordException;
-// import com.lawlayui.e_commerce.account.domain.value_object.Email;
+import com.lawlayui.e_commerce.account.domain.value_object.Email;
 import com.lawlayui.e_commerce.account.domain.value_object.Password;
 import com.lawlayui.e_commerce.account.domain.value_object.Role;
 
 class UserTest {
-    private String USER_ID = "1";
-    private String RAW_EMAIL = "person@gmail.com";
-    private String RAW_PASSWORD = "12345678";
+    private static final String USER_ID = "1";
+    private static final String RAW_EMAIL = "person@gmail.com";
+    private static final String RAW_PASSWORD = "12345678";
+    private static final Role ROLE = Role.CUSTOMER;
+    private static final Password HASHED_PASSWORD =
+            Password.createFromRaw(RAW_PASSWORD.toCharArray());
 
-    private Role role = Role.CUSTOMER;
-    private Password HASHED_PASSWORD = Password.createFromRaw(RAW_PASSWORD.toCharArray());
-    // private Email EMAIL = Email.of(RAW_EMAIL);
+    private User user;
 
-    private User USER = User.rehydrate(USER_ID, RAW_EMAIL, HASHED_PASSWORD.getHashedValue(), role,
-         LocalDateTime.now(), LocalDateTime.now());
-
-    @BeforeEach  
+    @BeforeEach
     void setUp() {
-        USER = User.rehydrate(USER_ID, RAW_EMAIL, HASHED_PASSWORD.getHashedValue(), role,
-        LocalDateTime.now(), LocalDateTime.now());
-
-    }
-
-    // Factory Test
-    @Test 
-    @DisplayName("User registration testing")
-    void register_ShouldReturnNewUser_WhenAllParametersAreTrue() {
-        User user = User.register(RAW_EMAIL, RAW_PASSWORD, role);
-
-        assertNotNull(user);
-        assertEquals(RAW_EMAIL, user.getEmail().getValue());
-        assertEquals(Role.CUSTOMER, role);
+        user = User.rehydrate(
+                USER_ID,
+                RAW_EMAIL,
+                HASHED_PASSWORD.getHashedValue(),
+                ROLE,
+                LocalDateTime.now(),
+                LocalDateTime.now());
     }
 
     @Test
-    @DisplayName("User registration when email is incorrect")
-    void register_ShouldThrowInvalidEmailException_WhenEmailInvalid() {
-        assertThrows(InvalidEmailException.class,
-            () -> User.register("invalidEmail", RAW_PASSWORD, role));
+    @DisplayName("Registers a user with valid data")
+    void register_returnsUser_whenDataIsValid() {
+        User registered = User.register(RAW_EMAIL, RAW_PASSWORD, ROLE);
+
+        assertNotNull(registered);
+        assertNotNull(registered.getUserId());
+        assertEquals(RAW_EMAIL, registered.getEmail().getValue());
+        assertEquals(ROLE, registered.getRole());
+        assertTrue(registered.isActive());
+        assertTrue(registered.getHashedPassword().verify(RAW_PASSWORD.toCharArray()));
     }
 
-    @Test 
-    @DisplayName("Rehydrate testing")
-    void rehydrate_ShouldReturnUser_WhenAllParametersAreTrue() {
-        User user = User.rehydrate(USER_ID, RAW_EMAIL, HASHED_PASSWORD.getHashedValue(), role,
-             LocalDateTime.now(), LocalDateTime.now());
-
-        assertNotNull(user);
-        assertEquals(USER_ID, user.getUserId());
-        assertEquals(RAW_EMAIL, user.getEmail().getValue());
-        assertEquals(role, user.getRole());
+    @Test
+    @DisplayName("Rejects registration with an invalid email")
+    void register_throwsInvalidEmailException_whenEmailIsInvalid() {
+        assertThrows(
+                InvalidEmailException.class,
+                () -> User.register("invalidEmail", RAW_PASSWORD, ROLE));
     }
 
-    @Test 
-    @DisplayName("Rehydrate when email is incorrect")
-    void rehydrate_ShouldThrowInvalidEmailException_WhenEmailInvalid() {
-        assertThrows(InvalidEmailException.class,
-             () -> User.rehydrate(USER_ID, "invaildEmail", HASHED_PASSWORD.getHashedValue(), role,
-             LocalDateTime.now(), LocalDateTime.now()));
+    @Test
+    @DisplayName("Rehydrates a user with valid data")
+    void rehydrate_returnsUser_whenDataIsValid() {
+        LocalDateTime createdAt = LocalDateTime.now();
+        LocalDateTime updatedAt = createdAt.plusMinutes(1);
+
+        User rehydrated = User.rehydrate(
+                USER_ID,
+                RAW_EMAIL,
+                HASHED_PASSWORD.getHashedValue(),
+                ROLE,
+                createdAt,
+                updatedAt);
+
+        assertNotNull(rehydrated);
+        assertEquals(USER_ID, rehydrated.getUserId());
+        assertEquals(RAW_EMAIL, rehydrated.getEmail().getValue());
+        assertEquals(ROLE, rehydrated.getRole());
+        assertEquals(createdAt, rehydrated.getCreatedAt());
+        assertEquals(updatedAt, rehydrated.getUpdatedAt());
     }
 
-    @Test 
-    @DisplayName("Rehydrate when fromat hashed password invalid") 
-    void rehydrate_ShouldThorwInvalidHashedPassword_WhenPasswordIsInvalid() {
-        assertThrows(InvalidHashedPasswordException.class, () -> 
-        User.rehydrate(USER_ID, RAW_EMAIL, "invalidFormatPasswrod", role,
-        LocalDateTime.now(), LocalDateTime.now()));
+    @Test
+    @DisplayName("Rejects rehydration with an invalid email")
+    void rehydrate_throwsInvalidEmailException_whenEmailIsInvalid() {
+        assertThrows(
+                InvalidEmailException.class,
+                () -> User.rehydrate(
+                        USER_ID,
+                        "invalidEmail",
+                        HASHED_PASSWORD.getHashedValue(),
+                        ROLE,
+                        LocalDateTime.now(),
+                        LocalDateTime.now()));
     }
 
-    //VO 
-    @Test 
-    @DisplayName("Verify password")
-    void verifyPassword_ShouldReturnTrue_WhenPasswordIsTrue() {
-        boolean result = USER.getHashedPassword().verify(RAW_PASSWORD.toCharArray());
-        assertEquals(true, result);
+    @Test
+    @DisplayName("Rejects rehydration with an invalid hashed password")
+    void rehydrate_throwsInvalidHashedPasswordException_whenPasswordIsInvalid() {
+        assertThrows(
+                InvalidHashedPasswordException.class,
+                () -> User.rehydrate(
+                        USER_ID,
+                        RAW_EMAIL,
+                        "invalidFormatPassword",
+                        ROLE,
+                        LocalDateTime.now(),
+                        LocalDateTime.now()));
     }
 
-    @Test 
-    @DisplayName("Verify password when password incorrect")
-    void verifyPassword_ShouldReturnFalse_WhenPasswordIsFalse() {
-        boolean result = USER.getHashedPassword().verify("Incorrect password".toCharArray());
-        assertEquals(false, result);
+    @Test
+    @DisplayName("Verifies matching and non-matching passwords")
+    void passwordVerification_matchesExpectedPassword() {
+        assertTrue(user.getHashedPassword().verify(RAW_PASSWORD.toCharArray()));
+        assertFalse(user.getHashedPassword().verify("incorrect".toCharArray()));
     }
 
-    //Logic
-    @Test 
-    @DisplayName("ResetPassword testing")
-    void resetPassword_ShouldPasswordChanged() {
-        String newPassword = "new_password";
-        USER.resetPassword(newPassword);
-        assertTrue(USER.getHashedPassword().verify(newPassword.toCharArray()));
+    @Test
+    @DisplayName("Email value object normalizes valid addresses")
+    void email_normalizesValidAddress() {
+        assertEquals("person@gmail.com", Email.of("Person@Gmail.com").getValue());
     }
 
-    @Test 
-    @DisplayName("ChangePassword testing")
-    void changePassword_ShouldPasswordChanged() {
-        String newPassword = "new_password1";
-        USER.resetPassword(newPassword);
-        assertTrue(USER.getHashedPassword().verify(newPassword.toCharArray()));
+    @Test
+    @DisplayName("Email value object rejects invalid address data")
+    void email_rejectsInvalidValidationData() {
+        String[] invalidEmails = {"invalidEmail", "person@", "@gmail.com", "person@gmail"};
+
+        for (String invalidEmail : invalidEmails) {
+            assertThrows(InvalidEmailException.class, () -> Email.of(invalidEmail));
+        }
     }
 
-    @Test 
-    @DisplayName("RegisterAsSeller testing")
-    void registerAsSeller_ShouldRoleChanged() {
-        USER.registerAsSeller();
-        assertEquals(Role.SELLER, USER.getRole());
+    @Test
+    @DisplayName("Password value object rejects invalid hashed password data")
+    void password_rejectsInvalidHashedValidationData() {
+        String[] invalidHashes = {null, "", "invalidFormatPassword"};
+
+        for (String invalidHash : invalidHashes) {
+            assertThrows(
+                    InvalidHashedPasswordException.class,
+                    () -> Password.createFromHashed(invalidHash));
+        }
+    }
+
+    @Test
+    @DisplayName("Resetting and changing a password replaces the stored password")
+    void passwordChanges_updateStoredPassword() {
+        String resetPassword = "new_password";
+        user.resetPassword(resetPassword);
+        assertTrue(user.getHashedPassword().verify(resetPassword.toCharArray()));
+
+        String changedPassword = "new_password1";
+        user.changePassword(changedPassword);
+        assertTrue(user.getHashedPassword().verify(changedPassword.toCharArray()));
+    }
+
+    @Test
+    @DisplayName("Registering as a seller changes the user's role")
+    void registerAsSeller_changesRole() {
+        user.registerAsSeller();
+
+        assertEquals(Role.SELLER, user.getRole());
     }
 }
