@@ -5,15 +5,13 @@ public class CreateUserProfileCommand {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String countryCode;
     private String address; 
 
-    public CreateUserProfileCommand(String userId, String firstName, String lastName, String phoneNumber, String countryCode, String address) {
+    public CreateUserProfileCommand(String userId, String firstName, String lastName, String phoneNumber, String address) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.countryCode = countryCode;
         this.address = address;
     }
 
@@ -31,10 +29,6 @@ public class CreateUserProfileCommand {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
     }
 
     public String getAddress() {
