@@ -78,7 +78,6 @@ class UserApplicationCommandTest {
                 "First",
                 "Last",
                 "0812345678",
-                "+62",
                 "Jl. Merdeka No. 10, Kel. Braga, Kec. Sumur Bandung, Kota Bandung, Jawa Barat, 40111");
 
         useCase.createUserProfile(command);
@@ -102,7 +101,6 @@ class UserApplicationCommandTest {
                 "First",
                 "Last",
                 "0812345678",
-                "+62",
                 "Jl. Merdeka No. 10, Kel. Braga, Kec. Sumur Bandung, Kota Bandung, Jawa Barat, 40111");
 
         assertThrows(UserNotFoundException.class, () -> useCase.createUserProfile(command));
@@ -138,7 +136,7 @@ class UserApplicationCommandTest {
         UpdateUserProfileUseCaseImpl useCase =
                 new UpdateUserProfileUseCaseImpl(userProfileRepository, userRepository);
         UpdateUserProfileCommand command = new UpdateUserProfileCommand(
-                PROFILE_ID, USER_ID, "New Name", "1234567890", null, null, null);
+            PROFILE_ID, USER_ID, "New Name", "1234567890", null);
 
         useCase.updateUserProfile(command);
 
@@ -162,7 +160,7 @@ class UserApplicationCommandTest {
         UpdateUserProfileUseCaseImpl useCase =
                 new UpdateUserProfileUseCaseImpl(userProfileRepository, userRepository);
         UpdateUserProfileCommand command = new UpdateUserProfileCommand(
-                PROFILE_ID, USER_ID, "New Name", null, null, null, null);
+            PROFILE_ID, USER_ID, "New Name", null, null);
 
         assertThrows(UserProfileNotFoundException.class, () -> useCase.updateUserProfile(command));
 
@@ -183,7 +181,7 @@ class UserApplicationCommandTest {
         UpdateUserProfileUseCaseImpl useCase =
                 new UpdateUserProfileUseCaseImpl(userProfileRepository, userRepository);
         UpdateUserProfileCommand command = new UpdateUserProfileCommand(
-                PROFILE_ID, USER_ID, "New Name", null, null, null, null);
+            PROFILE_ID, USER_ID, "New Name", null, null);
 
         assertThrows(UserNotFoundException.class, () -> useCase.updateUserProfile(command));
 
