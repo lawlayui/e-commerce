@@ -25,14 +25,22 @@ import lombok.Setter;
 @Getter 
 public class UserProfileEntityJpa {
     @Id 
-    @Column(name = "profile_id")
+    @Column(name = "id")
     private String profileId;
 
     @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
-    @JoinColumn(name="user_id", referencedColumnName = "userId")
+    @JoinColumn(name="user_id")
     private  UserEntityJpa user;
+
+    @Column(name = "full_name", nullable = false, length = 255)
     private String fullName;
+
+    @Column(name = "phone_number", nullable = false, length = 255)
     private String phoneNumber;
+
+    @Column(name = "address", nullable = false, length = 500)
     private String address; 
+
+    @Column(name = "updated_at", nullable = true)
     private LocalDateTime updatedAt;
 }

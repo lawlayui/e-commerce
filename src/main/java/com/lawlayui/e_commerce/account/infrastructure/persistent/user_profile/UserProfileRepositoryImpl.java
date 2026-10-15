@@ -20,7 +20,7 @@ public class UserProfileRepositoryImpl implements UserProfileRepository{
 
     @Override
     public void deleteByUserProfileIdAndUserId(String userProfileId, String userId) {
-        jpaRepository.deleteByProfileIdAndUser_Id(userProfileId, userId);
+        jpaRepository.deleteByProfileIdAndUserId(userProfileId, userId);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class UserProfileRepositoryImpl implements UserProfileRepository{
 
     @Override
     public List<UserProfile> getByUserId(String userId) {
-        return UserProfilePersistentMapper.toDomains(jpaRepository.findByUser_Id(userId));
+        return UserProfilePersistentMapper.toDomains(jpaRepository.findByUserId(userId));
     }
 
     @Override
     public Optional<UserProfile> getByUserProfileIdAndUserId(String userProfileId, String userId) {
-        return jpaRepository.findByUserProfileIdAndUser_Id(userProfileId, userId).map(UserProfilePersistentMapper::toDomain);
+        return jpaRepository.findByUserProfileIdAndUserId(userProfileId, userId).map(UserProfilePersistentMapper::toDomain);
     }
 
     public void save(UserProfile userProfile, User user) {

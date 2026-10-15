@@ -29,6 +29,7 @@ import lombok.Setter;
 @Builder
 public class UserEntityJpa {
     @Id
+    @Column(name = "id")
     private String userId;
 
     @Column(name = "full_name", nullable = false, length = 255)
