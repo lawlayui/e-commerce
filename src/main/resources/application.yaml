@@ -1,3 +1,14 @@
 spring:
   application:
     name: e_commerce 
+
+  security:
+    oauth2: 
+      client:
+        registration:
+          google: 
+            client-id: CLIENT-ID 
+            client-secret: CLIENT-SECRET
+            scope:
+            - profile 
+            - email
