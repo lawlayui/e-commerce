@@ -21,6 +21,50 @@ public class CatalogProduct {
     private LocalDateTime createdAt; 
     private LocalDateTime updatedAt;
 
+    public void rename(String newName) {
+        this.name = newName; 
+    }
+
+    public void changeDescription(String newDescription) {
+        this.description = newDescription;
+    }
+
+    public void changePrice(BigDecimal newPrice) {
+        this.price = Money.of(newPrice);
+    }
+
+    public void addCategory(String cateogry) {
+        this.categories.add(Category.of(cateogry));
+    }
+
+    public void removeCategory(String category) {
+        this.categories.remove(Category.of(category));
+    }
+
+    public void changeImageUrl(String newImageUrl) {
+        this.imageUrl = newImageUrl;
+    }
+
+    public void markAsAvailable() {
+        this.availability = ProductStatus.AVAILABLE;
+    }
+    
+    public void markAsOutOfStock() {
+        this.availability = ProductStatus.OUT_OF_STOCK;
+    }
+
+    public void discontinue() {
+        this.availability = ProductStatus.DISCOUNTINUED;
+    }
+
+    public void changeRating(Double newRating) {
+        this.avarageRating = Rating.of(newRating);
+    }
+
+    public void changeReviewCount(int newReviewCount) {
+        this.reviewCount = newReviewCount;
+    }
+
     private CatalogProduct(String catalogProductId, SKU sku, String sellerId, String name, String description, Money price, List<Category> categories
         , String imageUrl, ProductStatus availability, Rating avarageRating, int reviewCount, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
