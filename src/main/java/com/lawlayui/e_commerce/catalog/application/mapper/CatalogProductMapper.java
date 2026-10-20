@@ -5,7 +5,6 @@ import java.util.List;
 import com.lawlayui.e_commerce.catalog.application.port.in.CatalogProductDetailDto;
 import com.lawlayui.e_commerce.catalog.application.port.in.CreateCatalogProductCommand;
 import com.lawlayui.e_commerce.catalog.domain.CatalogProduct;
-import com.lawlayui.e_commerce.catalog.domain.value_object.Category;
 
 public class CatalogProductMapper {
     public static CatalogProductDetailDto toDto(CatalogProduct catalogProduct) {
@@ -23,10 +22,6 @@ public class CatalogProductMapper {
     }
 
     public static CatalogProduct commandToDomain(CreateCatalogProductCommand command) {
-        List<Category> categories = command.categories().stream()
-            .map((category) -> Category.of(category))
-            .toList();
-
-        return CatalogProduct.create(command.sku(), command.sellerId(), command.name(), command.description(), command.price(), categories, command.imageUrl());
+        return CatalogProduct.create(command.sku(), command.sellerId(), command.name(), command.description(), command.price(), command.categories(), command.imageUrl());
     }
 }
