@@ -83,13 +83,13 @@ public class CatalogProduct {
         this.updatedAt = updatedAt;
     }
 
-    public static CatalogProduct create(String catalogProductId, String sku, String sellerId, String name, String description, BigDecimal price, 
+    public static CatalogProduct create(String sku, String sellerId, String name, String description, BigDecimal price, 
         List<String> categories, String imageUr
     ) {
         List<Category> categories2 = categories.stream()
             .map(value -> Category.of(value))
             .toList();
-        return new CatalogProduct(catalogProductId, SKU.of(sku), sellerId, name, description, Money.of(price), categories2, imageUr, ProductStatus.DISCOUNTINUED, Rating.of(0.0), 0, LocalDateTime.now(), LocalDateTime.now());
+        return new CatalogProduct(null, SKU.of(sku), sellerId, name, description, Money.of(price), categories2, imageUr, ProductStatus.DISCOUNTINUED, Rating.of(0.0), 0, LocalDateTime.now(), LocalDateTime.now());
     }
 
     public static CatalogProduct reconstitue(String catalogProductId, String sku, String sellerId, String name, String description, BigDecimal price, 
