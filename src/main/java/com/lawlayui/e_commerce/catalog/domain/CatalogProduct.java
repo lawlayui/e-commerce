@@ -93,12 +93,12 @@ public class CatalogProduct {
     }
 
     public static CatalogProduct reconstitue(String catalogProductId, String sku, String sellerId, String name, String description, BigDecimal price, 
-        List<String> categories, String imageUrl, ProductStatus availability, Rating avargeRating, int reviewCount, LocalDateTime createdAt, LocalDateTime updatedAt
+        List<String> categories, String imageUrl, ProductStatus availability, Double avargeRating, int reviewCount, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
         List<Category> categories2 = categories.stream()
             .map(value -> Category.of(value))
             .toList();
-        return new CatalogProduct(catalogProductId, SKU.of(sku), sellerId, name, description, Money.of(price), categories2, imageUrl, availability, avargeRating, reviewCount, createdAt, updatedAt);
+        return new CatalogProduct(catalogProductId, SKU.of(sku), sellerId, name, description, Money.of(price), categories2, imageUrl, availability, Rating.of(reviewCount), reviewCount, createdAt, updatedAt);
     }
 
     public String getCatalogProductId() {
