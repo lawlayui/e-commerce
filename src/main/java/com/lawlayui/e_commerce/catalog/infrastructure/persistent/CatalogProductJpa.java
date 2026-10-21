@@ -7,12 +7,15 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.lawlayui.e_commerce.account.domain.User;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,8 +37,9 @@ public class CatalogProductJpa {
     @Column(unique = true, nullable = false)
     private String sku;
 
-    @Column(nullable = false, name = "seller_id")
-    private String sellerId; 
+    @ManyToOne 
+    @JoinColumn(name = "seller_id")
+    private User seller; 
 
     @Column(nullable = false, length = 255)
     private String name; 
