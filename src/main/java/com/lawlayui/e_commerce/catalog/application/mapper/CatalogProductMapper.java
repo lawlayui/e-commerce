@@ -3,6 +3,7 @@ package com.lawlayui.e_commerce.catalog.application.mapper;
 import java.util.List;
 
 import com.lawlayui.e_commerce.catalog.application.port.in.CatalogProductDetailDto;
+import com.lawlayui.e_commerce.catalog.application.port.in.CatalogProductDto;
 import com.lawlayui.e_commerce.catalog.application.port.in.CreateCatalogProductCommand;
 import com.lawlayui.e_commerce.catalog.domain.CatalogProduct;
 
@@ -19,6 +20,10 @@ public class CatalogProductMapper {
         return catalogProducts.stream()
             .map(CatalogProductMapper::toDto)
             .toList();
+    }
+
+    public static CatalogProductDto toCatalogProductDto(CatalogProduct catalogProduct) {
+        return new CatalogProductDto(catalogProduct.getCatalogProductId(), catalogProduct.getName(), catalogProduct.getAvailability().name(), catalogProduct.getPrice().getValue(), catalogProduct.getImageUrl(), catalogProduct.getAvargeRating().getValue(), catalogProduct.getReviewCount());
     }
 
     public static CatalogProduct commandToDomain(CreateCatalogProductCommand command) {
