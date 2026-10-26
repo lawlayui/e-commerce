@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.lawlayui.e_commerce.seller_product.domain.exception.InvalidAddCategory;
 import com.lawlayui.e_commerce.seller_product.domain.exception.InvalidChangeDescription;
@@ -55,11 +56,11 @@ public class SellerProduct {
             udpatedAt);
     }
 
-    public static SellerProduct create(String sku, String sellerId, String name, String description, BigDecimal price, List<String> categories,
+    public static SellerProduct create(String sellerId, String name, String description, BigDecimal price, List<String> categories,
         String imageUrl
     ) {
         return new SellerProduct(sellerId, 
-            sku,
+            UUID.randomUUID().toString(),
             sellerId,
             name,
             description, 
