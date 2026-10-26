@@ -96,7 +96,7 @@ public class SellerProduct {
     public String getSku() {
         return sku;
     }
-    public String sellerId() {
+    public String getSellerId() {
         return sellerId;
     }
     public String getName() {
