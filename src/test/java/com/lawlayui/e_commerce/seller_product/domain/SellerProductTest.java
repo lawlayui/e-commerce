@@ -3,7 +3,6 @@ package com.lawlayui.e_commerce.seller_product.domain;
 import com.lawlayui.e_commerce.seller_product.domain.exception.InvalidAddCategory;
 import com.lawlayui.e_commerce.seller_product.domain.exception.InvalidChangeDescription;
 import com.lawlayui.e_commerce.seller_product.domain.exception.InvalidRename;
-import com.lawlayui.e_commerce.seller_product.domain.value_object.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,6 @@ class SellerProductTest {
     @BeforeEach
     void setUp() {
         sellerProduct = SellerProduct.create(
-                "SKU123",
                 "sellerId1",
                 "Valid Product Name",
                 "This is a valid product description that is long enough to pass validation.",
